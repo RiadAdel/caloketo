@@ -1,11 +1,27 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { AppLoading } from "expo";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, View } from "react-native";
+import {
+  useFonts,
+  Cairo_400Regular,
+  Cairo_600SemiBold,
+  Cairo_700Bold,
+} from "@expo-google-fonts/cairo";
+import { Tile } from "./src/components/tile";
 
 export default function App() {
+  let [fontLoaded] = useFonts({
+    Cairo_400Regular,
+    Cairo_600SemiBold,
+    Cairo_700Bold,
+  });
+
+  if (!fontLoaded) return <AppLoading />;
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Tile />
       <StatusBar style="light" translucent trabackgroundColor="transparent" />
     </View>
   );
@@ -14,7 +30,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: "100%",
     alignItems: "center",
-    justifyContent: "center",
   },
 });
