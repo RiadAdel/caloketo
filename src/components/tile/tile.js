@@ -1,6 +1,7 @@
 import React from "react";
 import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import colors from "../../config/colors";
+import Overlay from "../overlay";
 import SearchBar from "./search-bar";
 
 export function Tile() {
@@ -9,11 +10,11 @@ export function Tile() {
       style={styles.container}
       source={require("./../../assets/images/tile-background.png")}
     >
-      <View style={styles.overlay}>
+      <Overlay>
         <Text style={styles.title}>وصفات وطبخات</Text>
         <Text style={[styles.title, styles.strong]}>مذهلة</Text>
         <SearchBar />
-      </View>
+      </Overlay>
     </ImageBackground>
   );
 }
@@ -26,13 +27,6 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 24,
     borderBottomRightRadius: 24,
     overflow: "hidden",
-  },
-  overlay: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: "rgba(0,0,0,.4)",
-    justifyContent: "center",
-    alignItems: "center",
   },
   title: {
     color: colors["neutral-100"],
